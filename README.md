@@ -8,6 +8,16 @@ The package called prominentcolor uses the Kmeans++ algorithm to work this out. 
 $ go get github.com/EdlinOrg/prominentcolor
 ```
 
+## Generate the Wasm JavaScript Loader
+
+We have to generate the wasm_exec.js file. It's a JavaScript file provided by Go to load your .wasm file into a Web page.
+
+The loader file is available in your standard to Go installation. Just copy it into the project folder with the following command:
+
+```sh
+$ cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" .
+```
+
 ## Compile
 
 To compile our main.go file for the web we have to set some environments variables: GOOS and GOARCH. GOOS which stands for Go Operating System, we will set to js. GOARCH which stands for Go Architecture, we will set to wasm. And then we can compile our file using build:
@@ -23,4 +33,3 @@ We can do that in many ways. We can use the Python [SimpleHTTPServer](https://do
 ```sh
 $ goexec 'http.ListenAndServe(`:8080`,http.FileServer(http.Dir(`.`)))'
 ```
-
